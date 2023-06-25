@@ -10,6 +10,12 @@ void push(stack_t **top, unsigned int line_number)
 {
 	stack_t *newNode = NULL;
 	(void)line_number;
+	
+	if (top == NULL || *top == NULL)
+	{
+		fprintf(stderr, "L%d: usage: push integer", line_num);
+		exit(EXIT_FAILURE);
+	}
 
 	newNode = malloc(sizeof(stack_t));
 	if (newNode == NULL)
@@ -59,7 +65,10 @@ void pint(stack_t **stack, unsigned int line_number)
 {
 	(void)line_number;
 	if (stack == NULL || *stack == NULL)
-		return;
+	{
+		fprintf(stderr, "L%d: can\'t print an empty stack\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 
 	printf("%d\n", (*stack)->n);
 }
@@ -78,7 +87,8 @@ void pop(stack_t **stack, unsigned int line_number)
 
 
 	if (stack == NULL)
-		return;
+		fprintf(stderr, "L%d: can\'t pop an empty stack\n", line_number);
+		exit(EXIT_FAILURE);
 
 	*stack = temp->next;
 	if (*stack != NULL)

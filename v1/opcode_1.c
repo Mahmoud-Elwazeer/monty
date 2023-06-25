@@ -9,7 +9,9 @@
 void push(stack_t **top, unsigned int line_number)
 {
 	stack_t *newNode = NULL;
-	(void)line_number;
+/*	(void)line_number; */
+
+	printf("%d\n", line_number);
 
 	newNode = malloc(sizeof(stack_t));
 	if (newNode == NULL)
