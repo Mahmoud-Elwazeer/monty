@@ -1,4 +1,4 @@
 push 5
-push 123a
+dpush 12
 push 7
 pall

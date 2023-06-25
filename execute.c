@@ -43,6 +43,7 @@ int read_file(FILE *file)
 			free(line);
 			free_pointer(av);
 			free_struct(top);
+			fclose(file);
 			exit(EXIT_FAILURE);
 
 		}
