@@ -1,6 +1,8 @@
 #include "monty.h"
 
 int arg_push;
+
+
 /**
  * read_file - read file line by line
  * @av: array of string
@@ -17,6 +19,10 @@ void read_file(FILE *file, char **av)
 	while ((nread = getline(&line, &size, file)) != -1)
 	{
 		n_line++;
+		free(av[0]);
+		free(av[1]);
+		av[0] = (char *)malloc(sizeof(char) * 1024);
+		av[1] = (char *)malloc(sizeof(char) * 1024);
 		av = split_string(line, " \n\t");
 		if (_strlen(av) == 2)
 			arg_push = atoi(av[1]);
