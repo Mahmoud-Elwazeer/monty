@@ -39,6 +39,5 @@ void execute(char **av, unsigned int n)
 	order.opcode = av[0];
 	order.f = push;
 	order.f(&top, n);
-	pall(&top);
 
 }
