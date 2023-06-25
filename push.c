@@ -6,7 +6,9 @@
  * Return: void
  */
 
-void push(stack_t **top, unsigned int data)
+void push(stack_t **top, unsigned int line_number)
 {
+	if (isdigit(data) == 0)
+	
 	
 }
