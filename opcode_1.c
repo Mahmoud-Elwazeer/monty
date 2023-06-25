@@ -1,14 +1,15 @@
 #include "monty.h"
+
 /**
  * push - push data to stack
  * @top: pointer to pointer
  * @data: data of the stack
  * Return: void
  */
-
-void push(stack_t **top, unsigned int data)
+void push(stack_t **top, unsigned int line_number)
 {
 	stack_t *newNode = NULL;
+	(void)line_number;
 
 	newNode = malloc(sizeof(stack_t *));
 	if (newNode == NULL)
@@ -19,7 +20,8 @@ void push(stack_t **top, unsigned int data)
 
 	newNode->next = NULL;
 	newNode->prev = NULL;
-	newNode->n = data;
+	printf("x = %d\n", arg_push);
+	newNode->n = arg_push;
 
 	if (*top == NULL)
 		*top = newNode;

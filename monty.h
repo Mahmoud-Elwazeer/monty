@@ -8,6 +8,8 @@
 #include <unistd.h>
 #include <string.h>
 
+extern int arg_push;
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -41,6 +43,9 @@ typedef struct instruction_s
 
 char **split_string(char *str, char *delim);
 int _strlen(char **av);
+
+void read_file(FILE *file, char **av);
+void execute(char **av, unsigned int n);
 
 void push(stack_t **top, unsigned int line_number);
 void pall(stack_t **top);
