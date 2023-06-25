@@ -8,28 +8,18 @@
  */
 char **split_string(char *str, char *delim)
 {
-	char **splits = NULL;
-	char *split = NULL;
+	char **splits;
+	char *split;
 	int count = 0;
 
 	splits = (char **)malloc(sizeof(char *) * 1024);
 	if (splits == NULL)
-	{
-		free(splits);
 		return (NULL);
-	}
 
 	split = strtok(str, delim);
-	if (split == NULL)
-	{
-		free(split);
-		return (NULL);
-	}
-
 	while (split != NULL)
 	{
-		splits[count] = split;
-		count++;
+		splits[count++] = strdup(split);
 		split = strtok(NULL, delim);
 	}
 	splits[count] = NULL;
