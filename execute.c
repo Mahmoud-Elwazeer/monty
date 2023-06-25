@@ -69,9 +69,9 @@ int execute(stack_t **top, char **av, unsigned int n)
 	instruction_t order[] = {
 		{ "push", push },
 		{ "pall", pall},
-		/**
+		
 		{ "pop", pop },
-		{ "add", add },
+	/**	{ "add", add },
 		{ "nop", nop },
 		*/
 		{ NULL, NULL}

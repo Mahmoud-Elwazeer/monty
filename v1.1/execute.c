@@ -62,6 +62,7 @@ int read_file(FILE *file)
  */
 int execute(stack_t **top, char **av, unsigned int n)
 {
+	char *err = "usage: push integer";
 	instruction_t order[] = {
 		{ "push", push },
 		{ "pall", pall},
@@ -72,14 +73,34 @@ int execute(stack_t **top, char **av, unsigned int n)
 		*/
 		{ NULL, NULL}
 	};
-	int i = 0;
+	int i = 0, j = 0;
 
 	while (order[i].opcode != NULL)
 	{
-		if (strcmp(av[0], order[i].opcode) == 0)
+		if (strcmp(order[i].opcode, av[0]) == 0)
 		{
-			order[i].f(top, n);
-			return (0);
+			if (strcmp(order[i].opcode, "push") == 0)
+			{
+				if (av[1] == NULL)
+				{
+					fprintf(stderr, "L%d: %s\n", line_num, err);
+					exit(EXIT_FAILURE);
+				}
+				for (j = 0; token[1][j]; j++)
+				{
+					if (token[1][j] < '0' || token[1][j] > '9')
+					{
+						free_struck(&top);
+						free(av);
+						fprintf(stderr, "L%d: %s\n", line_num, err);
+						exit(EXIT_FAILURE);
+					}
+				}
+				line_num = atoi(av[1]);
+			}
+			op[i].f(top, line_num);
+			free(av);
+			return 0;
 		}
 		i++;
 	}

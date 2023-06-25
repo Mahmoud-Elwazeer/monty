@@ -1,4 +1,4 @@
 push 5
-xpush 6
-push 7
+push 6
+push dd7
 pall
