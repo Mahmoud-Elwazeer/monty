@@ -16,7 +16,7 @@ char **split_string(char *str, char *delim)
 	if (splits == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		return (EXIT_FAILURE);
+		return (NULL);
 	}
 
 	split = strtok(str, delim);
