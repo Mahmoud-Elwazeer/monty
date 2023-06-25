@@ -26,7 +26,7 @@ int read_file(FILE *file)
 
 		if (_strlen(av) == 2)
 		{
-			if (isdigit(av[1]))
+			/*if (isdigit(av[1]))
 				arg_push = atoi(av[1]);
 			else
 			{
@@ -35,7 +35,7 @@ int read_file(FILE *file)
 				free_pointer(av);
 				free_struct(top);
 				exit(EXIT_FAILURE);
-			}
+			}*/
 		}
 		execute(&top, av, n_line);
 		free_pointer(av);
