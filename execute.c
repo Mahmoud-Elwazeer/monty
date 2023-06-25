@@ -65,6 +65,8 @@ void execute(stack_t **top, char **av, unsigned int n)
 	}
 
 	free_stack(top);
+	/* fprintf(stderr, "L%d: unknown instruction %s", , av[0]);*/
+	return (EXIT_FAILURE);
 
 }
 
@@ -78,7 +80,7 @@ void free_stack(stack_t **top)
 {
 	stack_t *temp = *top;
 
-	while (temp)
+	while (*top)
 	{
 		temp = (*top)->next;
 		free(*top);
