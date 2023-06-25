@@ -45,14 +45,16 @@ char **split_string(char *str, char *delim);
 int _strlen(char **av);
 
 void read_file(FILE *file, char **av);
-void execute(char **av, unsigned int n);
+void execute(stack_t **top, char **av, unsigned int n);
 
 void push(stack_t **top, unsigned int line_number);
-void pall(stack_t **top);
+void pall(stack_t **top, unsigned int line_number);
 void pin(stack_t **top, unsigned int line_number);
 void pop(stack_t **top, unsigned int line_number);
 void swap(stack_t **top, unsigned int line_number);
 void add(stack_t **top, unsigned int line_number);
 void nop(stack_t **top, unsigned int line_number);
+
+void free_struct(stack_t *head);
 
 #endif
