@@ -15,14 +15,11 @@ void read_file(FILE *file, char **av)
 
 	while ((nread = getline(&line, &size, file)) != -1)
 	{
-		av = split_string(line, " \n\t");
-		execute(av, n_line);
-		if (_strlen(av) == 2)
-		{
-			printf("y = %d\n", atoi(av[1]));
-			arg_push = atoi(av[1]);
-		}
 		n_line++;
+		av = split_string(line, " \n\t");
+		if (_strlen(av) == 2)
+			arg_push = atoi(av[1]);
+		execute(av, n_line);
 	}
 
 	free(line);

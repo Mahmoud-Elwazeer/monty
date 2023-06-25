@@ -20,7 +20,6 @@ void push(stack_t **top, unsigned int line_number)
 
 	newNode->next = NULL;
 	newNode->prev = NULL;
-	printf("x = %d\n", arg_push);
 	newNode->n = arg_push;
 
 	if (*top == NULL)
