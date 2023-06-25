@@ -6,5 +6,3 @@ pint
 push 3
 pint
 pall
-nop jjjj
-
