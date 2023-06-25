@@ -6,9 +6,9 @@ int arg_push;
 /**
  * read_file - read file line by line
  * @av: array of string
- * Return: void
+ * Return: 1 if fail
  */
-void read_file(FILE *file)
+int read_file(FILE *file)
 {
 	char **av = NULL;
 	char *line = NULL;
@@ -21,6 +21,9 @@ void read_file(FILE *file)
 	{
 		n_line++;
 		av = split_string(line, " \n\t");
+		if (av == NULL)
+			return (EXIT_FAILURE);
+
 		if (_strlen(av) == 2)
 			arg_push = atoi(av[1]);
 		execute(&top, av, n_line);
@@ -29,6 +32,7 @@ void read_file(FILE *file)
 
 	free(line);
 	free_struct(top);
+	return (0);
 }
 
 /**
