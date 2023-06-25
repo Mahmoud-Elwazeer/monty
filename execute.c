@@ -38,7 +38,7 @@ void read_file(FILE *file, char **av)
  * @top: head of stack
  * @av: array of string
  * @n: line number
- * Return: void
+ * Return: 0 if sucess , 1 if failed
  */
 int execute(stack_t **top, char **av, unsigned int n)
 {
