@@ -25,9 +25,7 @@ int read_file(FILE *file)
 		if (_strlen(av) == 2)
 		{
 			if (error_push(av[1]) == 0)
-			{
 				arg_push = atoi(av[1]);
-			}
 			else
 			{
 				fprintf(stderr, "L%d: usage: push integer\n", n_line);
