@@ -81,6 +81,11 @@ int execute(stack_t **top, char **av, unsigned int n)
 	{
 		if (strcmp(av[0], order[i].opcode) == 0)
 		{
+			if (strcmp(order[i].opcode, "push") != 0 && _strlen(av) > 1)
+			{
+				fprintf(stderr, "L%d: unknown instruction %s\n", n, av[0]);
+				return (-1);
+			}
 			order[i].f(top, n);
 			return (0);
 		}
