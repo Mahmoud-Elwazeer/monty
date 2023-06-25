@@ -14,7 +14,7 @@ void read_file(FILE *file, char **av)
 	size_t size = 0;
 	ssize_t nread;
 	unsigned int n_line = 0;
-	stack_t *top = NULL;
+	stack_t **top = NULL;
 
 	while ((nread = getline(&line, &size, file)) != -1)
 	{
@@ -30,7 +30,7 @@ void read_file(FILE *file, char **av)
 	}
 
 	free(line);
-	free(top);
+	/*free_stack(&top);*/
 }
 
 /**
@@ -64,6 +64,8 @@ void execute(stack_t **top, char **av, unsigned int n)
 		i++;
 	}
 
+	free_stack(top);
+
 }
 
 
@@ -72,15 +74,14 @@ void execute(stack_t **top, char **av, unsigned int n)
  * @head: head pointer
  * Return: Nothing
  */
-void free_struct(stack_t *head)
+void free_stack(stack_t **top)
 {
-	if (!head)
-		return;
-	while (head->next)
+	stack_t *temp = *top;
+
+	while (temp)
 	{
-		head = head->next;
-		free(head->prev);
+		temp = (*top)->next;
+		free(*top);
+		*top = temp;
 	}
-	if (!(head->next))
-		free(head);
 }
