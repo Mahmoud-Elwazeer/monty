@@ -22,7 +22,10 @@ int read_file(FILE *file)
 		n_line++;
 		av = split_string(line, " \n\t");
 		if (av == NULL)
-			return (EXIT_FAILURE);
+		{
+			fprintf(stderr, "Error: malloc failed\n");
+			exit(EXIT_FAILURE);
+		}
 
 		if (_strlen(av) == 2)
 		{
