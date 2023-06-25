@@ -25,7 +25,18 @@ int read_file(FILE *file)
 			return (EXIT_FAILURE);
 
 		if (_strlen(av) == 2)
-			arg_push = atoi(av[1]);
+		{
+			if (isdigit(av[1]))
+				arg_push = atoi(av[1]);
+			else
+			{
+				fprintf(stderr, "L%d: usage: push integer\n", n_line);
+				free(line);
+				free_pointer(av);
+				free_struct(top);
+				exit(EXIT_FAILURE);
+			}
+		}
 		execute(&top, av, n_line);
 		free_pointer(av);
 	}
