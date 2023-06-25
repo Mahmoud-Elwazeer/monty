@@ -15,6 +15,7 @@ char **split_string(char *str, char *delim)
 	splits = (char **)malloc(sizeof(char *) * 1024);
 	if (splits == NULL)
 	{
+		free(str);
 		free(splits);
 		return (NULL);
 	}
@@ -22,6 +23,7 @@ char **split_string(char *str, char *delim)
 	split = strtok(str, delim);
 	if (split == NULL)
 	{
+		free(str);
 		free(split);
 		return (NULL);
 	}
