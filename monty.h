@@ -59,4 +59,7 @@ void nop(stack_t **top, unsigned int line_number);
 void free_struct(stack_t *top);
 void free_stack(stack_t **top);
 void free_pointer(char **av);
+
+int error_push(char *av);
+
 #endif

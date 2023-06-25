@@ -26,7 +26,11 @@ int read_file(FILE *file)
 
 		if (_strlen(av) == 2)
 		{
+<<<<<<< HEAD
 			/*if (isdigit(av[1]))
+=======
+			if (error_push(av[1]) == 0)
+>>>>>>> 4f8cf5dcadb3c3e6583f1ea1e5fa3f677b3d61af
 				arg_push = atoi(av[1]);
 			else
 			{
