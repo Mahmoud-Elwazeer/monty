@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <ctype.h>
 
 extern int arg_push;
 
@@ -44,7 +45,7 @@ typedef struct instruction_s
 char **split_string(char *str, char *delim);
 int _strlen(char **av);
 
-void read_file(FILE *file);
+int read_file(FILE *file);
 int execute(stack_t **top, char **av, unsigned int n);
 
 void push(stack_t **top, unsigned int line_number);
@@ -58,4 +59,7 @@ void nop(stack_t **top, unsigned int line_number);
 void free_struct(stack_t *top);
 void free_stack(stack_t **top);
 void free_pointer(char **av);
+
+int error_push(char *av);
+
 #endif

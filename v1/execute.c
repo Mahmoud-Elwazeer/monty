@@ -6,9 +6,9 @@ int arg_push;
 /**
  * read_file - read file line by line
  * @av: array of string
- * Return: void
+ * Return: 1 if fail
  */
-void read_file(FILE *file)
+int read_file(FILE *file)
 {
 	char **av = NULL;
 	char *line = NULL;
@@ -21,14 +21,31 @@ void read_file(FILE *file)
 	{
 		n_line++;
 		av = split_string(line, " \n\t");
+		if (av == NULL)
+			return (EXIT_FAILURE);
+
 		if (_strlen(av) == 2)
-			arg_push = atoi(av[1]);
+		{
+			if (isdigit(av[1]))
+
+			if (error_push(av[1]) == 0)
+				arg_push = atoi(av[1]);
+			else
+			{
+				fprintf(stderr, "L%d: usage: push integer\n", n_line);
+				free(line);
+				free_pointer(av);
+				free_struct(top);
+				exit(EXIT_FAILURE);
+			}
+		}
 		execute(&top, av, n_line);
+		free_pointer(av);
 	}
 
 	free(line);
 	free_struct(top);
-	free_pointer(av);
+	return (0);
 }
 
 /**
@@ -120,5 +137,6 @@ void free_pointer(char **av)
 		free(av[i]);
 		i++;
 	}
-	free(av);
+	if (av != NULL)
+		free(av);
 }
