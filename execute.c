@@ -76,7 +76,8 @@ int execute(stack_t **top, char **av, unsigned int n)
  * @head: head pointer
  * Return: Nothing
  */
-void free_stack(stack_t **top)
+
+/* void free_stack(stack_t **top)
 {
 	stack_t *temp = *top;
 
@@ -86,4 +87,8 @@ void free_stack(stack_t **top)
 		free(*top);
 		*top = temp;
 	}
-}
+} */
+
+
+
+
