@@ -31,3 +31,18 @@ void push(stack_t **top, unsigned int data)
 	}
 
 }
+
+
+void pall(stack_t **top)
+{
+	stack_t *temp = *top;
+
+	if (temp == NULL)
+		return;
+	while(temp != NULL)
+	{
+		printf("%d\n", temp->n);
+		temp = temp->next;
+	}
+
+}

@@ -33,7 +33,7 @@ int main(int ac, char *av[])
 			push(&top, atoi(av[1]));
 		}
 		else
-			printf("pull\n");
+			pall(&top);
 	}
 	if (line)
 		free(line);

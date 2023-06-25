@@ -43,7 +43,7 @@ char **split_string(char *str, char *delim);
 int _strlen(char **av);
 
 void push(stack_t **top, unsigned int line_number);
-void pall(stack_t **top, unsigned int line_number);
+void pall(stack_t **top);
 void pin(stack_t **top, unsigned int line_number);
 void pop(stack_t **top, unsigned int line_number);
 void swap(stack_t **top, unsigned int line_number);
