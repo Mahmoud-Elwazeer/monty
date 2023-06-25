@@ -39,6 +39,9 @@ typedef struct instruction_s
 } instruction_t;
 
 
+char **split_string(char *str, char *delim);
+int _strlen(char **av);
+
 void push(stack_t **top, unsigned int line_number);
 void pall(stack_t **top, unsigned int line_number);
 void pin(stack_t **top, unsigned int line_number);

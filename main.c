@@ -12,6 +12,7 @@ int main(int ac, char *av[])
 	char *line = NULL;
 	size_t size = 0;
 	ssize_t nread;
+	stack_t *top = NULL;
 
 	if (ac != 2)
 	{
@@ -26,7 +27,13 @@ int main(int ac, char *av[])
 	}
 	while ((nread = getline(&line, &size, file)) != -1)
 	{
-		printf("%s", line);
+		av = split_string(line, " \n\t");
+		if (_strlen(av) == 2)
+		{
+			push(&top, atoi(av[1]));
+		}
+		else
+			printf("pull\n");
 	}
 	if (line)
 		free(line);
