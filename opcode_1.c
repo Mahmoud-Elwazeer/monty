@@ -3,7 +3,7 @@
 /**
  * push - push data to stack
  * @top: pointer to pointer
- * @data: data of the stack
+ * @data: line number
  * Return: void
  */
 void push(stack_t **top, unsigned int line_number)
@@ -47,4 +47,19 @@ void pall(stack_t **top, unsigned int line_number)
 		temp = temp->next;
 	}
 
+}
+
+/**
+ * pint - prints the top value of the stack
+ * @top: pointer to a pointer to top node
+ * @ line_number: number of line
+ * Return: void
+ */
+
+void pint(stack_t **stack, unsigned int line_number)
+{
+	if (stack == NULL || *stack == NULL)
+		return;
+
+	printf("%d\n", (*stack)->n);
 }
