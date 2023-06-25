@@ -57,6 +57,7 @@ void pall(stack_t **top, unsigned int line_number)
 
 void pint(stack_t **stack, unsigned int line_number)
 {
+	(void)line_number;
 	if (stack == NULL || *stack == NULL)
 		return;
 
@@ -72,14 +73,14 @@ void pint(stack_t **stack, unsigned int line_number)
  */
 void pop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp;
+	(void)line_number;
+	stack_t *temp = *stack;
 
 	if (stack == NULL)
 		return;
 
-	temp = *stack;
-	*stack = tmp->next;
+	*stack = temp->next;
 	if (*stack != NULL)
 		(*stack)->prev = NULL;
-	free(tmp);
+	free(temp);
 }
