@@ -67,9 +67,9 @@ int read_file(FILE *file)
 int execute(stack_t **top, char **av, unsigned int n)
 {
 	instruction_t order[] = {
-		{ "push", push },
+		{ "push", push},
 		{ "pall", pall},
-		
+		{ "pint", pint},	
 		{ "pop", pop },
 	/**	{ "add", add },
 		{ "nop", nop },
