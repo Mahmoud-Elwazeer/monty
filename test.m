@@ -1,4 +1,4 @@
 push 5
-push 6h
+push 123a
 push 7
 pall
