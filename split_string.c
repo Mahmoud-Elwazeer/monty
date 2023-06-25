@@ -31,7 +31,7 @@ char **split_string(char *str, char *delim)
 }
 
 /**
- * _strlen : len of array of string
+ * _strlen - len of array of string
  * @av: array of string
  * Return: len of array
  */
