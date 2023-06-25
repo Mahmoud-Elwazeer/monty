@@ -37,7 +37,14 @@ int read_file(FILE *file)
 				exit(EXIT_FAILURE);
 			}
 		}
-		execute(&top, av, n_line);
+		if (execute(&top, av, n_line) == -1)
+		{
+			free(line);
+			free_pointer(av);
+			free_struct(top);
+			exit(EXIT_FAILURE);
+
+		}
 		free_pointer(av);
 	}
 
@@ -72,15 +79,13 @@ int execute(stack_t **top, char **av, unsigned int n)
 		if (strcmp(av[0], order[i].opcode) == 0)
 		{
 			order[i].f(top, n);
-			return (EXIT_SUCCESS);
+			return (0);
 		}
 		i++;
 	}
 
-
-	free_stack(top);
 	fprintf(stderr, "L%d: unknown instruction %s\n", n, av[0]);
-	return (EXIT_FAILURE);
+	return (-1);
 
 }
 
