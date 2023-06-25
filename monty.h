@@ -45,7 +45,7 @@ char **split_string(char *str, char *delim);
 int _strlen(char **av);
 
 void read_file(FILE *file, char **av);
-void execute(stack_t **top, char **av, unsigned int n);
+int execute(stack_t **top, char **av, unsigned int n);
 
 void push(stack_t **top, unsigned int line_number);
 void pall(stack_t **top, unsigned int line_number);

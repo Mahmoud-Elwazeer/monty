@@ -14,7 +14,7 @@ void read_file(FILE *file, char **av)
 	size_t size = 0;
 	ssize_t nread;
 	unsigned int n_line = 0;
-	stack_t **top = NULL;
+	stack_t *top = NULL;
 
 	while ((nread = getline(&line, &size, file)) != -1)
 	{
@@ -30,7 +30,7 @@ void read_file(FILE *file, char **av)
 	}
 
 	free(line);
-	/*free_stack(&top);*/
+	free_stack(&top);
 }
 
 /**
@@ -40,7 +40,7 @@ void read_file(FILE *file, char **av)
  * @n: line number
  * Return: void
  */
-void execute(stack_t **top, char **av, unsigned int n)
+int execute(stack_t **top, char **av, unsigned int n)
 {
 	instruction_t order[] = {
 		{ "push", push },
@@ -59,13 +59,13 @@ void execute(stack_t **top, char **av, unsigned int n)
 		if (strcmp(av[0], order[i].opcode) == 0)
 		{
 			order[i].f(top, n);
-			break;
+			return (EXIT_SUCCESS);
 		}
 		i++;
 	}
 
 	free_stack(top);
-	/* fprintf(stderr, "L%d: unknown instruction %s", , av[0]);*/
+	fprintf(stderr, "L%d: unknown instruction %s\n", n, av[0]);
 	return (EXIT_FAILURE);
 
 }
