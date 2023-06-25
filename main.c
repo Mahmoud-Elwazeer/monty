@@ -13,6 +13,7 @@ int main(int ac, char *av[])
 	size_t size = 0;
 	ssize_t nread;
 	stack_t *top = NULL;
+	instruction_t execute;
 
 	if (ac != 2)
 	{
@@ -30,7 +31,9 @@ int main(int ac, char *av[])
 		av = split_string(line, " \n\t");
 		if (_strlen(av) == 2)
 		{
-			push(&top, atoi(av[1]));
+			execute.opcode = "push";
+			execute.f = push;
+			execute.f(&top, atoi(av[1]));
 		}
 		else
 			pall(&top);
