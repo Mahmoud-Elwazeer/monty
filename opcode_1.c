@@ -13,7 +13,7 @@ void push(stack_t **top, unsigned int line_number)
 	
 	if (top == NULL || *top == NULL)
 	{
-		fprintf(stderr, "L%d: usage: push integer", line_num);
+		fprintf(stderr, "L%d: usage: push integer", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -87,8 +87,10 @@ void pop(stack_t **stack, unsigned int line_number)
 
 
 	if (stack == NULL)
+	{
 		fprintf(stderr, "L%d: can\'t pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
+	}
 
 	*stack = temp->next;
 	if (*stack != NULL)
