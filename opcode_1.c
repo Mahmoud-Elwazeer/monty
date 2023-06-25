@@ -46,7 +46,6 @@ void pall(stack_t **top, unsigned int line_number)
 		printf("%d\n", temp->n);
 		temp = temp->next;
 	}
-
 }
 
 /**
@@ -62,4 +61,25 @@ void pint(stack_t **stack, unsigned int line_number)
 		return;
 
 	printf("%d\n", (*stack)->n);
+}
+
+
+/**
+ * pop - removes the top element of the stack.
+ * @stack: pointer to a pointer to top node
+ * @line_number: number of line
+ * Return: void
+ */
+void pop(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp;
+
+	if (stack == NULL)
+		return;
+
+	temp = *stack;
+	*stack = tmp->next;
+	if (*stack != NULL)
+		(*stack)->prev = NULL;
+	free(tmp);
 }
