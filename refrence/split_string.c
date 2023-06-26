@@ -14,7 +14,10 @@ char **split_string(char *str, char *delim)
 
 	splits = (char **)malloc(sizeof(char *) * 1024);
 	if (splits == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
 		return (NULL);
+	}
 
 	split = strtok(str, delim);
 	while (split != NULL)
@@ -23,11 +26,12 @@ char **split_string(char *str, char *delim)
 		split = strtok(NULL, delim);
 	}
 	splits[count] = NULL;
+	free(split);
 	return (splits);
 }
 
 /**
- * _strlen : len of array of string
+ * _strlen - len of array of string
  * @av: array of string
  * Return: len of array
  */

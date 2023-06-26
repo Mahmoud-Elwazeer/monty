@@ -64,9 +64,10 @@ int execute(stack_t **top, char **av, unsigned int n)
 		{ "push", push},
 		{ "pall", pall},
 		{ "pint", pint},
-		{ "pop", pop },
-	/**	{ "add", add },*/
-		{ "nop", nop },
+		{ "pop", pop},
+	/*	{ "add", add},*/
+		{ "swap", swap},
+		{ "nop", nop},
 		{ NULL, NULL}
 	};
 	int i = 0;

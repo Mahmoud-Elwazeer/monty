@@ -2,13 +2,12 @@
 
 int arg_push;
 
-
 /**
  * read_file - read file line by line
- * @av: array of string
- * Return: void
+ * @file: file top be read from
+ * Return: 1 if fail
  */
-void read_file(FILE *file)
+int read_file(FILE *file)
 {
 	char **av = NULL;
 	char *line = NULL;
@@ -21,14 +20,35 @@ void read_file(FILE *file)
 	{
 		n_line++;
 		av = split_string(line, " \n\t");
+		if (av == NULL)
+			return (EXIT_FAILURE);
 		if (_strlen(av) == 2)
-			arg_push = atoi(av[1]);
-		execute(&top, av, n_line);
+		{
+			if (error_push(av[1]) == 0)
+				arg_push = atoi(av[1]);
+			else
+			{
+				fprintf(stderr, "L%d: usage: push integer\n", n_line);
+				free(line);
+				free_pointer(av);
+				free_struct(top);
+				fclose(file);
+				exit(EXIT_FAILURE);
+			}
+		}
+		if (execute(&top, av, n_line) == -1)
+		{
+			free(line);
+			free_pointer(av);
+			free_struct(top);
+			fclose(file);
+			exit(EXIT_FAILURE);
+		}
+		free_pointer(av);
 	}
-
 	free(line);
 	free_struct(top);
-	free_pointer(av);
+	return (0);
 }
 
 /**
@@ -41,13 +61,12 @@ void read_file(FILE *file)
 int execute(stack_t **top, char **av, unsigned int n)
 {
 	instruction_t order[] = {
-		{ "push", push },
+		{ "push", push},
 		{ "pall", pall},
-		/**
+		{ "pint", pint},
 		{ "pop", pop },
-		{ "add", add },
+	/**	{ "add", add },*/
 		{ "nop", nop },
-		*/
 		{ NULL, NULL}
 	};
 	int i = 0;
@@ -57,25 +76,22 @@ int execute(stack_t **top, char **av, unsigned int n)
 		if (strcmp(av[0], order[i].opcode) == 0)
 		{
 			order[i].f(top, n);
-			return (EXIT_SUCCESS);
+			return (0);
 		}
 		i++;
 	}
 
-
-	free_stack(top);
 	fprintf(stderr, "L%d: unknown instruction %s\n", n, av[0]);
-	return (EXIT_FAILURE);
+	return (-1);
 
 }
 
 
 /**
- * free_struct - free stack
- * @head: head pointer
+ * free_stack - free the whole stack
+ * @top: top pointer
  * Return: Nothing
  */
-
 void free_stack(stack_t **top)
 {
 	stack_t *temp = *top;
@@ -115,10 +131,12 @@ void free_pointer(char **av)
 {
 	int i = 0;
 
-	while(av[i] != NULL)
+	while
+		(av[i] != NULL)
 	{
 		free(av[i]);
 		i++;
 	}
-	free(av);
+	if (av != NULL)
+		free(av);
 }

@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <ctype.h>
 
 extern int arg_push;
 
@@ -21,9 +22,9 @@ extern int arg_push;
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -36,20 +37,20 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 
 char **split_string(char *str, char *delim);
 int _strlen(char **av);
 
-void read_file(FILE *file);
+int read_file(FILE *file);
 int execute(stack_t **top, char **av, unsigned int n);
 
 void push(stack_t **top, unsigned int line_number);
 void pall(stack_t **top, unsigned int line_number);
-void pin(stack_t **top, unsigned int line_number);
+void pint(stack_t **top, unsigned int line_number);
 void pop(stack_t **top, unsigned int line_number);
 void swap(stack_t **top, unsigned int line_number);
 void add(stack_t **top, unsigned int line_number);
@@ -58,4 +59,7 @@ void nop(stack_t **top, unsigned int line_number);
 void free_struct(stack_t *top);
 void free_stack(stack_t **top);
 void free_pointer(char **av);
+
+int error_push(char *av);
+
 #endif
