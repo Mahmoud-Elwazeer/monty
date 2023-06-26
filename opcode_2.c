@@ -56,3 +56,26 @@ void add(stack_t **top, unsigned int line_number)
 	(*top)->next->n = temp;
 	pop(top, line_number);
 }
+
+
+/**
+ * sub - sub top two element in stack and store the value in
+ * second node
+ * @top: pointer to pointer to top
+ * @line_number: number of line
+ * Return: void
+ */
+void sub(stack_t **top, unsigned int line_number)
+{
+	int temp = 0;
+
+	if ((*top)->next == NULL || *top == NULL || top == NULL)
+	{
+		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	temp = (*top)->next->n - (*top)->n;
+	(*top)->next->n = temp;
+	pop(top, line_number);
+}
