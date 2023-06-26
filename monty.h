@@ -59,6 +59,7 @@ void sub(stack_t **top, unsigned int line_number);
 void mul(stack_t **top, unsigned int line_number);
 void _div(stack_t **top, unsigned int line_number);
 void mod(stack_t **top, unsigned int line_number);
+void pchar(stack_t **top, unsigned int line_number);
 
 void free_struct(stack_t *top);
 void free_stack(stack_t **top);

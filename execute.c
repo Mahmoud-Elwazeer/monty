@@ -72,6 +72,7 @@ int execute(stack_t **top, char **av, unsigned int n)
 		{ "div", _div},
 		{ "mul", mul},
 		{ "mod", mod},
+		{ "pchar", pchar},
 		{ NULL, NULL}
 	};
 	int i = 0;

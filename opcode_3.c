@@ -81,3 +81,27 @@ void mod(stack_t **top, unsigned int line_number)
 	(*top)->next->n = temp;
 	pop(top, line_number);
 }
+
+/**
+ * pchar - prints char at top value of the stack.
+ * @top: pointer to pointer to top
+ * @line_number: num of line
+ */
+void pchar(stack_t **top, unsigned int line_number)
+{
+	int number = 0;
+
+	number = (*top)->n;
+
+	if (number < 0 || number > 127)
+	{
+		fprintf(stderr, "L%d: can't pchar, value out of range", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if (*top == NULL || top == NULL)
+	{
+		fprintf(stderr, "L%d: can't pchar, stack empty", line_number);
+		exit(EXIT_FAILURE);
+	}
+	printf("%c\n", number);
+}
