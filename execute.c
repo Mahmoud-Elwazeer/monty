@@ -69,6 +69,7 @@ int execute(stack_t **top, char **av, unsigned int n)
 		{ "swap", swap},
 		{ "nop", nop},
 		{ "sub", sub},
+		{ "_div", _div},
 		{ NULL, NULL}
 	};
 	int i = 0;
