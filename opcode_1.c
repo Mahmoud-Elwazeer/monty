@@ -53,43 +53,43 @@ void pall(stack_t **top, unsigned int line_number)
 
 /**
  * pint - prints the top value of the stack
- * @stack: pointer to a pointer to top node
+ * @top: pointer to a pointer to top node
  * @line_number: number of line
  * Return: void
  */
 
-void pint(stack_t **stack, unsigned int line_number)
+void pint(stack_t **top, unsigned int line_number)
 {
-	if (stack == NULL || *stack == NULL)
+	if (top == NULL || *top == NULL)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	printf("%d\n", (*stack)->n);
+	printf("%d\n", (*top)->n);
 }
 
 
 /**
  * pop - removes the top element of the stack.
- * @stack: pointer to a pointer to top node
+ * @top: pointer to a pointer to top node
  * @line_number: number of line
  * Return: void
  */
 
-void pop(stack_t **stack, unsigned int line_number)
+void pop(stack_t **top, unsigned int line_number)
 {
-	stack_t *temp = *stack;
+	stack_t *temp = *top;
 
 
-	if (stack == NULL || *stack == NULL)
+	if (top == NULL || *top == NULL)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	*stack = temp->next;
-	if (*stack != NULL)
-		(*stack)->prev = NULL;
+	if (temp->next != NULL)
+		temp->next->prev = temp->prev;
+	*top = temp->next;
 	free(temp);
 }
