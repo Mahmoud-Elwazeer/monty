@@ -65,7 +65,7 @@ int execute(stack_t **top, char **av, unsigned int n)
 		{ "pall", pall},
 		{ "pint", pint},
 		{ "pop", pop},
-	/*	{ "add", add},*/
+		{ "add", add},
 		{ "swap", swap},
 		{ "nop", nop},
 		{ NULL, NULL}
